@@ -50,7 +50,7 @@ services:
     volumes:
       - ./e2e:/e2e
     environment:
-      - CYPRESS_baseUrl=http://localhost
+      - CYPRESS_baseUrl=http://frontend:80
     networks:
       - book-net
     entrypoint: ["npx", "cypress", "run"]
