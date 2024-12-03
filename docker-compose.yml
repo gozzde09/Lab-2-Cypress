@@ -15,9 +15,6 @@ services:
     build:
       context: ./backend
     container_name: backend-book
-    depends_on:
-      database:
-        condition: service_healthy
     environment:
       - PGURI=${PGURI}
     ports:
