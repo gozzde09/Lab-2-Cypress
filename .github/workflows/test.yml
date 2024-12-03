@@ -16,22 +16,20 @@ jobs:
       - name: Set up Docker
         uses: docker/setup-buildx-action@v2
 
+      # Install Docker Compose
       - name: Install Docker Compose
         run: |
           sudo apt-get update
-          sudo apt-get install -y docker-compose-plugin
+          sudo apt-get install -y docker-compose
 
       - name: Build Docker Compose services
-        run: docker compose -f docker-compose.yml build
+        run: docker-compose -f docker-compose.yml build
 
-      - name: Start Docker Compose services
-        run: docker compose -f docker-compose.yml up -d
+      - name: Run Cypress tests in Docker Compose
+        run: docker-compose -f docker-compose.yml run cypress
 
-      - name: Wait for services to become healthy
-        run: docker compose -f docker-compose.yml ps
-
-      - name: Run Cypress tests
-        run: docker compose -f docker-compose.yml run cypress
+      - name: Run Cypress tests in Docker Compose
+        run: docker-compose -f docker-compose.yml run cypress # Run the Cypress tests
 
       - name: Shutdown Docker Compose
-        run: docker compose -f docker-compose.yml down --volumes
+        run: docker-compose -f docker-compose.yml down # Clean up after the tests
