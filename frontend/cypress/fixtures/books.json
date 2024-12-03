@@ -1,0 +1,72 @@
+[
+  {
+    "id": 6,
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "language_id": 1,
+    "language_name": "English"
+  },
+  {
+    "id": 5,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "language_id": 1,
+    "language_name": "English"
+  },
+  {
+    "id": 3,
+    "title": "Moby Dick",
+    "author": "Herman Melville",
+    "language_id": 1,
+    "language_name": "English"
+  },
+  {
+    "id": 1,
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "language_id": 1,
+    "language_name": "English"
+  },
+  {
+    "id": 8,
+    "title": "Crime and Punishment",
+    "author": "Fyodor Dostoevsky",
+    "language_id": 2,
+    "language_name": "Russian"
+  },
+  {
+    "id": 4,
+    "title": "War and Peace",
+    "author": "Leo Tolstoy",
+    "language_id": 2,
+    "language_name": "Russian"
+  },
+  {
+    "id": 7,
+    "title": "The Odyssey",
+    "author": "Homer",
+    "language_id": 3,
+    "language_name": "Greek"
+  },
+  {
+    "id": 10,
+    "title": "Journey to the Center of the Earth",
+    "author": "Jules Verne",
+    "language_id": 4,
+    "language_name": "French"
+  },
+  {
+    "id": 9,
+    "title": "Les Misérables",
+    "author": "Victor Hugo",
+    "language_id": 4,
+    "language_name": "French"
+  },
+  {
+    "id": 2,
+    "title": "The Museum of Innocence",
+    "author": "Orhan Pamuk",
+    "language_id": 9,
+    "language_name": "Turkish"
+  }
+]

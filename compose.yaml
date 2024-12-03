@@ -1,0 +1,47 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend-book
+    ports:
+      - '80:80'
+    depends_on:
+      - backend
+    networks:
+      - book-net
+
+  backend:
+    build:
+      context: ./backend
+    container_name: backend-book
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - PGURI=${PGURI}
+    ports:
+      - '3000:3000'
+    networks:
+      - book-net
+
+  database:
+    image: postgres:latest
+    container_name: databaseBook
+    environment:
+      - POSTGRES_PASSWORD=${PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+    healthcheck:
+      test: 'pg_isready -U ${DB_USER}'
+      interval: 2s
+      retries: 5
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - book-net
+
+networks:
+  book-net:
+    driver: bridge
