@@ -6,8 +6,6 @@ services:
     container_name: frontend-book
     ports:
       - '80:80'
-    depends_on:
-      - backend
     networks:
       - book-net
 
