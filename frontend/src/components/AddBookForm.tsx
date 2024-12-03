@@ -56,7 +56,7 @@ export default function AddBookForm({ onAddBook, count }: AddBookFormProps) {
       title: "",
       author: "",
       language_id: 0,
-    }); // Reset form
+    });
   };
 
   return (
