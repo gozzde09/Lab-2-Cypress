@@ -42,6 +42,19 @@ services:
     networks:
       - book-net
 
+  cypress:
+    image: cypress/included:12.0.0
+    depends_on:
+      - frontend
+    working_dir: /e2e
+    volumes:
+      - ./e2e:/e2e
+    environment:
+      - CYPRESS_baseUrl=http://frontend:80
+    networks:
+      - book-net
+    entrypoint: ["npx", "cypress", "run"]
+
 networks:
   book-net:
     driver: bridge
