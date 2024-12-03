@@ -1,13 +1,16 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import { defineConfig } from "cypress";
 import codeCoverage from "@cypress/code-coverage/task";
-import babelrc from "@cypress/code-coverage/use-babelrc";
+
 export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
+      // Set up the code coverage task
       codeCoverage(on, config);
+
+      // Add Babel preprocessor (this automatically uses the `useBabelrc` config)
       on("file:preprocessor", require("@cypress/code-coverage/use-babelrc"));
 
-      // Return the config object
       return config;
     },
   },
@@ -15,7 +18,7 @@ export default defineConfig({
   component: {
     devServer: {
       framework: "react",
-      bundler: "vite",
+      bundler: "vite", // Use Vite for bundling React components
     },
   },
 });
