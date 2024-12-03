@@ -33,6 +33,9 @@ describe("AddBookForm", () => {
     cy.get('select[name="language_id"] option')
       .eq(5)
       .should("have.text", "German");
+    cy.get('select[name="language_id"] option')
+      .eq(5)
+      .should("have.text", "Turkish");
   });
 
   //Submit
