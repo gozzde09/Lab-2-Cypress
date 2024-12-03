@@ -13,17 +13,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Docker Buildx
+      - name: Set up Docker
         uses: docker/setup-buildx-action@v2
 
-      - name: Set up Docker Compose
-        run: docker-compose -f docker-compose.yml up -d # This will start your containers in the background
-
-      - name: Install dependencies
-        run: npm install
+      # Install Docker Compose
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
 
       - name: Build Docker Compose services
-        run: docker-compose -f docker-compose.yml build # Ensure the images are built (if necessary)
+        run: docker-compose -f docker-compose.yml build
+
+      - name: Run Cypress tests in Docker Compose
+        run: docker-compose -f docker-compose.yml run cypress
 
       - name: Run Cypress tests in Docker Compose
         run: docker-compose -f docker-compose.yml run cypress # Run the Cypress tests
