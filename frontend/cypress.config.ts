@@ -9,7 +9,7 @@ export default defineConfig({
       codeCoverage(on, config);
 
       // Add Babel preprocessor (this automatically uses the `useBabelrc` config)
-      on("file:preprocessor", require("@cypress/code-coverage/use-babelrc"));
+      // on("file:preprocessor", require("@cypress/code-coverage/use-babelrc"));
 
       return config;
     },

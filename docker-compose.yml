@@ -6,6 +6,8 @@ services:
     container_name: frontend-book
     ports:
       - '80:80'
+    depends_on:
+      - backend
     networks:
       - book-net
 
@@ -13,6 +15,9 @@ services:
     build:
       context: ./backend
     container_name: backend-book
+    depends_on:
+      database:
+        condition: service_healthy
     environment:
       - PGURI=${PGURI}
     ports:
@@ -28,8 +33,8 @@ services:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
     healthcheck:
-      test: 'pg_isready -U ${DB_USER}'
-      interval: 2s
+      interval: 10s
+      timeout: 5s
       retries: 5
     volumes:
       - ./data:/var/lib/postgresql/data
