@@ -11,3 +11,11 @@ FROM nginx:latest
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
+
+FROM cypress/included:12.0.0
+
+WORKDIR /e2e
+COPY package*.json ./
+RUN npm install
+COPY . .
+CMD ["npx", "cypress", "run"]
